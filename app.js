@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const yachtRouter = require("./routes/yachtsRouter")
+const planeRouter = require("./routes/planesRouter")
 
 const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/errorController");
@@ -19,7 +20,8 @@ app.use(
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
-app.use("/api/v1/scrape", yachtRouter);
+// app.use("/api/v1/scrape", yachtRouter);
+app.use("/api/v1/scrape", planeRouter);
 
 app.all("*", (req, res, next) => {
   next(
